@@ -1,0 +1,170 @@
+/* css/components/preview.css */
+
+.preview-container {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 10px;
+    animation: fadeIn var(--transition-normal) forwards;
+}
+
+.preview-container.active {
+    display: flex;
+}
+
+/* Card header actions */
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+.preview-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.preview-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Code area */
+.code-preview-wrapper {
+    position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: #05070c;
+    overflow: hidden;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
+    transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.code-preview-wrapper:hover {
+    border-color: var(--primary);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(6, 182, 212, 0.1);
+}
+
+[data-theme="light"] .code-preview-wrapper {
+    background: #fafafa;
+    border: 1px solid var(--border-color);
+}
+
+.code-preview {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    padding: 20px;
+    overflow: auto;
+    max-height: 400px;
+    margin: 0;
+    color: #38bdf8; /* Soft blue color for standard XML contents */
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+[data-theme="light"] .code-preview {
+    color: #0369a1;
+}
+
+/* Syntax Highlighting overrides */
+.xml-tag { color: #f43f5e; font-weight: 500; }     /* Red tags */
+.xml-attr { color: #fb923c; }                    /* Orange attributes */
+.xml-val { color: #a3e635; }                     /* Green values */
+.xml-text { color: var(--text-main); }           /* Main text values */
+.xml-comment { color: #64748b; font-style: italic; }
+
+[data-theme="light"] .xml-tag { color: #b91c1c; }
+[data-theme="light"] .xml-attr { color: #c2410c; }
+[data-theme="light"] .xml-val { color: #4d7c0f; }
+[data-theme="light"] .xml-text { color: #0f172a; }
+
+/* Table Preview - XML to Excel */
+.table-preview-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: rgba(10, 15, 26, 0.2);
+    max-height: 380px;
+    transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.table-preview-wrapper:hover {
+    border-color: var(--primary);
+    box-shadow: 0 8px 32px rgba(6, 182, 212, 0.05);
+}
+
+[data-theme="light"] .table-preview-wrapper {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.preview-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+.preview-table th {
+    background: var(--bg-input);
+    color: var(--text-main);
+    font-weight: 600;
+    padding: 12px 16px;
+    border-bottom: 2px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.preview-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-muted);
+    white-space: nowrap;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.preview-table tr {
+    transition: background-color var(--transition-fast);
+}
+
+.preview-table tr:hover td {
+    background: rgba(var(--primary-rgb), 0.04);
+    color: var(--text-main);
+}
+
+[data-theme="light"] .preview-table tr:hover td {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.table-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+}
+
+.pagination-info {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.pagination-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,175 @@
+/* css/components/dropzone.css */
+
+.dropzone-container {
+    width: 100%;
+}
+
+.dropzone {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    background: rgba(10, 15, 26, 0.4);
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: border-color var(--transition-normal), background-color var(--transition-normal), transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+[data-theme="light"] .dropzone {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.dropzone:hover, .dropzone.dragover {
+    border-color: var(--primary);
+    background: rgba(6, 182, 212, 0.06);
+    box-shadow: 0 8px 30px rgba(6, 182, 212, 0.08);
+}
+
+.dropzone:hover {
+    transform: translateY(-2px);
+}
+
+.dropzone.dragover {
+    transform: scale(1.015);
+    box-shadow: 0 12px 40px rgba(6, 182, 212, 0.15);
+}
+
+.dropzone-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform var(--transition-normal);
+    filter: drop-shadow(0 4px 10px rgba(6, 182, 212, 0.15));
+}
+
+.dropzone:hover .dropzone-icon {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.dropzone-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-main);
+}
+
+.dropzone-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Uploaded file panel card */
+.file-card {
+    margin-top: 20px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    animation: slideIn var(--transition-fast) forwards;
+    transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
+}
+
+.file-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 8px 24px rgba(6, 182, 212, 0.1);
+    transform: translateY(-2px);
+}
+
+.file-info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-grow: 1;
+    min-width: 0; /* allows text truncation */
+}
+
+.file-icon-badge {
+    width: 44px;
+    height: 44px;
+    background: rgba(6, 182, 212, 0.1);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.file-icon-badge.excel {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+.file-icon-badge.xml {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--secondary);
+}
+
+.file-details {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.file-name {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-size {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.file-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.remove-file-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.remove-file-btn:hover {
+    color: var(--danger);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
